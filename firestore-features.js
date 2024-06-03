@@ -38,10 +38,14 @@ document.getElementById('data-form').addEventListener('submit', async (e) => {
     let birthDate = new Date(document.getElementById('birthDate').value);
     let age = parseInt(document.getElementById('age').value);
     let ra = parseInt(document.getElementById('ra').value);
+    let course = document.getElementById('course').value;
 
-    let student = { name, birthDate, age, ra };
+    let student = { name, birthDate, age, ra, course };
 
     await fbAddDoc(fbDb, student, "Alunos", fbAddDocCbFn);
+
+    // Limpa todos campos do formulário.
+    document.getElementById('data-form').reset();
 });
 
 // Lista os documentos ao clicar no botão.
@@ -52,11 +56,11 @@ document.getElementById('list-docs-button').addEventListener('click', async () =
 
 // Adiciona os documentos de exemplo.
 let ediney = { name: 'Ediney' };
-let studentDebora = { name: 'Debora', birthDate: new Date(1990, 8, 18), age: 34, ra: 21116 };
-let studentGabriel = { name: 'Gabriel', birthDate: new Date(2006, 6, 15), age: 17, ra: 23117 };
-let studentGustavo = { name: 'Gustavo', birthDate: new Date(2006, 4, 17), age: 17, ra: 22115 };
-let studentHenrique = { name: 'Henrique', birthDate: new Date(2007, 2, 16), age: 17, ra: 24118 };
-let studentJoao = { name: 'João', birthDate: new Date(2006, 4, 14), age: 18, ra: 25119 };
+let studentDebora = { name: 'Debora', birthDate: new Date(1990, 8, 18), age: 34, ra: 21116, course: 'Desenvolvimento de Sistemas' };
+let studentGabriel = { name: 'Gabriel', birthDate: new Date(2006, 6, 15), age: 17, ra: 23117, course: 'Desenvolvimento de Sistemas' };
+let studentGustavo = { name: 'Gustavo', birthDate: new Date(2006, 4, 17), age: 17, ra: 22115, course: 'Desenvolvimento de Sistemas' };
+let studentHenrique = { name: 'Henrique', birthDate: new Date(2007, 2, 16), age: 17, ra: 24118, course: 'Desenvolvimento de Sistemas' };
+let studentJoao = { name: 'João', birthDate: new Date(2006, 4, 14), age: 18, ra: 25119, course: 'Desenvolvimento de Sistemas' };
 let course = { name: 'Desenvolvimento de Sistemas', coordinator: ediney, students: [studentDebora, studentGabriel, studentGustavo, studentHenrique, studentJoao] };
 
 fbAddDoc(fbDb, ediney, "Professores", fbAddDocCbFn);
